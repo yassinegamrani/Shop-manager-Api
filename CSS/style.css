@@ -1,0 +1,88 @@
+*{
+    color: white;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    background-color: #1e293b;
+    color: white;
+    padding-top: 20px;
+    img{
+        margin-top: -15px;
+    }
+
+    div{
+        display: flex;
+    }
+    ul{
+        display: flex;
+        gap: 40px;
+    }
+}
+.flexPrice{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+.find {
+    padding: 20px;
+    text-align: center;
+    color: black;
+    
+}
+
+.find h1 {
+    margin-bottom: 20px;
+}
+hr{
+    margin: 0px ;
+}
+.find label {
+    display: inline-block;
+    margin: 10px;
+}
+
+.find input,
+.find select {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.find input {
+    width: 200px;
+}
+
+.find select {
+    width: 150px;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    background-color: #1e293b;
+    color: white;
+    padding: 20px;
+    div{
+        display: flex;
+    }
+    ul{
+        display: flex;
+        gap: 50px;
+    }
+    img {
+        margin-top: -15px;
+    }
+    i{
+        margin-top: 7px;
+        margin-left: 50px;
+    }
+}
+.hidden{
+    display: none;
+}
+button:hover{
+    background-color: aliceblue;
+}
