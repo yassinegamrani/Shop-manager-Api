@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marcket</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="stylesheet" href="./CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div>
+        <img
+          src="assestes/logo.png"
+          alt="logo market code"
+          width="60px"
+          height="60px"
+        />
+        <h1>Market code</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">acceuile</a></li>
+          <li><a href="#">produit</a></li>
+          <li><a href="#">contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <hr />
+    <main>
+      <section
+        class="find bg-cyan-800 underline flex items-center justify-between"
+      >
+        <div>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Rechercher un produit..."
+            class="text-black"
+          />
+        </div>
+
+        <label >Toutes les catégories</label>
+        <select name="All products" id="categories" class="text-black">
+          <!-- <option value="product 1" class="text-black">product 1</option> -->
+          
+        </select>
+        <br />
+        <label for=""> Filtrer by prix</label>
+         <input
+            id="search-input"
+            type="number"
+            placeholder="Rechercher un produit..."
+            class="text-black"
+          />
+        
+        <br />
+        <label for="">by sort</label>
+        <select name="" id="">
+          <option value="">all products</option>
+          <option value="">all products</option>
+          <option value="">all products</option>
+        </select>
+      </section>
+      <hr />
+
+      <section
+        id="products-container"
+        class="grid grid-cols-4 gap-12 p-5 overflow-hidden bg-cyan-900 rounded-xl"
+      >
+        <!-- <article>
+          <img src="assestes/ps5.jpg" alt="play station 5" />
+          <div class="flexPrice">
+            <h2>ps5</h2>
+            <h2>40 $</h2>
+          </div>
+          <p>ultimmm ps5</p>
+          <button style="background-color: green; align-items: center;"><i class="fa-solid fa-cart-plus"></i>&nbsp;add product</button>
+        </article> -->
+      </section>
+    </main>
+    <hr />
+    <footer>
+      <div class="logo">
+        <img
+          src="assestes/logo.png"
+          alt="logo market code"
+          width="60px"
+          height="60px"
+        />
+        <h1>Market code</h1>
+      </div>
+      <div>
+        <ul>
+          <li><a href="">acceuile</a></li>
+          <li><a href="">produit</a></li>
+          <li><a href="">contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>suivez nous</h3>
+        <i class="fa-solid fa-envelope"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+    </footer>
+
+    <script src="./Java-Script/script.js"></script>
+  </body>
+</html>
