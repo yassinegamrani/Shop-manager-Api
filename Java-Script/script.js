@@ -1,10 +1,7 @@
-
 fetch("http://localhost:3000/api/products")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
     dispalyData(data);
-    // searchProduct(data);
   })
   .catch((error) => {
     console.log("Une erreur est survenue :", error);
@@ -42,38 +39,99 @@ function erreurMessage() {
 const searchInput = document.getElementById("search-input");
 const productContainer = document.getElementById("products-container");
 
-searchInput.addEventListener("input", function() {
-    productContainer.innerHTML =""
-    console.log(searchInput.value);
-    fetch(`http://localhost:3000/api/products?search=${searchInput.value}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        dispalyData(data)
-        productNoTrouve(data)
+searchInput.addEventListener("input", function () {
+  productContainer.innerHTML = "";
+  console.log(searchInput.value);
+  fetch(`http://localhost:3000/api/products?search=${searchInput.value}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      dispalyData(data);
+      productNoTrouve(data);
+    })
+    .catch((error) => {
+      console.log("Une erreur est survenue :", error);
+      erreurMessage();
+    });
+});
+function productNoTrouve(data) {
+  if (data.length == 0) {
+    const productContainer = document.getElementById("products-container");
+    productContainer.innerHTML =
+      "<h2>Aucun résultat trouvé.</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+  }
+}
+const categoriesOptions = document.getElementById("categories");
+fetch("http://localhost:3000/api/categories")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("kkkkkk", data);
+    displayCategorie(data);
+  })
+  .catch((error) => {
+    console.log("Une erreur est survenue :", error);
+    erreurMessage();
+  });
+
+function displayCategorie(data) {
+  const categoriesOptions = document.getElementById("categories");
+  data.forEach((produit) => {
+    categoriesOptions.innerHTML += `<option value="${produit.id}" class="text-black">${produit.name}</option>`;
+  });
+}
+
+const priceInput = document.getElementById("price-input");
+priceInput.addEventListener("input", function () {
+  productContainer.innerHTML = "";
+  console.log(priceInput.value);
+  fetch(`http://localhost:3000/api/products?maxPrice=${priceInput.value}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      dispalyData(data);
+      productNoTrouve(data);
+    })
+    .catch((error) => {
+      console.log("Une erreur est survenue :", error);
+      erreurMessage();
+    });
+});
+
+const restButton = document.getElementById("restButton");
+
+restButton.addEventListener("click", function () {
+  const categories = document.getElementById('categories')
+  categories.selectedIndex=0
+  productContainer.innerHTML = ""
+  searchInput.value=""
+  priceInput.value=""
+  fetch("http://localhost:3000/api/products")
+    .then((response) => response.json())
+    .then((data) => {
+      dispalyData(data);
+    })
+    .catch((error) => {
+      console.log("Une erreur est survenue :  ", error);
+      erreurMessage();
+    });
+});
+  
+
+const categories = document.getElementById('categories')
+categories.addEventListener('change',function(event){
+  productContainer.innerHTML = "";
+  let box=event.target.value;
+  console.log(box)
+  fetch(`http://localhost:3000/api/products?categoryId=${box}`)
+    .then((response) => response.json())
+    .then((data) => {
+      dispalyData(data)
     })
     .catch((error) => {
       console.log("Une erreur est survenue :", error);
       erreurMessage();
     });
 
-});
-function productNoTrouve(data){
-  if (data.length == 0){
-    const productContainer = document.getElementById("products-container");
-    productContainer.innerHTML = "<h2>Aucun résultat trouvé.</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>"
-  }
-}
-const categoriesOptions = document.getElementById('categories')
-fetch("http://localhost:3000/api/categories")
-  .then(response => response.json())
-  .then(data => {
-    console.log("kkkkkk",data)
-  })
+})
 
-function displayCategorie(data){
-  const categoriesOptions = document.getElementById('categories')
-  data.forEach(produit=>{
-    categoriesOptions.innerHTML+=
-  })
-}
+
