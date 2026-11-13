@@ -32,6 +32,9 @@
           <li><a href="#">contact</a></li>
         </ul>
       </nav>
+      <div>
+        <button style="margin-top: -15px; font-size: 30px;"><i class="fa-solid fa-basket-shopping"></i></button>
+      </div>
     </header>
     <hr />
     <main>
@@ -50,25 +53,21 @@
 
         <label >Toutes les catégories</label>
         <select name="All products" id="categories" class="text-black">
+          <option value="" class="text-black" selected disabled>All products</option>
           <!-- <option value="product 1" class="text-black">product 1</option> -->
           
         </select>
         <br />
         <label for=""> Filtrer by prix</label>
          <input
-            id="search-input"
+            id="price-input"
             type="number"
-            placeholder="Rechercher un produit..."
+            placeholder="ajouter un prix..."
             class="text-black"
           />
         
         <br />
-        <label for="">by sort</label>
-        <select name="" id="">
-          <option value="">all products</option>
-          <option value="">all products</option>
-          <option value="">all products</option>
-        </select>
+        <button id="restButton" class="rounded-lg px-10 py-3 bg-gray-900 text-gray-100">Réinitialiser</button>
       </section>
       <hr />
 
