@@ -80,9 +80,3 @@ footer{
         margin-left: 50px;
     }
 }
-.hidden{
-    display: none;
-}
-button:hover{
-    background-color: aliceblue;
-}
