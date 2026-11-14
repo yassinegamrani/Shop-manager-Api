@@ -117,6 +117,25 @@ restButton.addEventListener("click", function () {
 });
   
 
+const disponiblePrdct = document.getElementById("disponiblePrdct");
+
+disponiblePrdct.addEventListener("click", function () {
+  const categories = document.getElementById('categories')
+  categories.selectedIndex=0
+  productContainer.innerHTML = ""
+  searchInput.value=""
+  priceInput.value=""
+  fetch("http://localhost:3000/api/products?inStock=true")
+    .then((response) => response.json())
+    .then((data) => {
+      dispalyData(data);
+    })
+    .catch((error) => {
+      console.log("Une erreur est survenue :  ", error);
+      erreurMessage();
+    });
+});
+
 const categories = document.getElementById('categories')
 categories.addEventListener('change',function(event){
   productContainer.innerHTML = "";
