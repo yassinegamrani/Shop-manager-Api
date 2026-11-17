@@ -80,3 +80,13 @@ footer{
         margin-left: 50px;
     }
 }
+
+.yourproduct{ 
+    position: fixed;
+    height: 100%; 
+    width: 33%;
+    right: 0;
+    overflow-y: auto;
+}
+.display{
+    display: none;}
