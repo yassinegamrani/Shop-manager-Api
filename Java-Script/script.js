@@ -1,3 +1,7 @@
+let storageCartsBuys =
+  JSON.parse(localStorage.getItem("storageCartsBuys")) || [];
+
+console.log(storageCartsBuys);
 fetch("http://localhost:3000/api/products")
   .then((response) => response.json())
   .then((data) => {
@@ -21,7 +25,7 @@ function dispalyData(data) {
           <p class=" underline">${product.description}</p>
           <p class=" underline">Disponibles dans le stock ${product.stock}</p>
           <p class=" underline">categorie : ${product.categoryName}</p>
-          <button class="btnBuy" value="${product.name}" style="background-color: green;"><i class="fa-solid fa-cart-plus"></i>&nbsp;add product</button>
+          <button class="btnBuy" id="${product.id}" style="background-color: green;"><i class="fa-solid fa-cart-plus"></i>&nbsp;add product</button>
         </article>`;
   });
   if (data == null) {
@@ -149,57 +153,90 @@ categories.addEventListener("change", function (event) {
       console.log("Une erreur est survenue :", error);
       erreurMessage();
     });
-})
-const buttonBuy = cartsContainer.querySelectorAll('.btnBuy')
-const buttonCart = document.getElementById('buttonCart')
+});
+// const buttonBuy = cartsContainer.querySelectorAll('.btnBuy')
+const buttonCart = document.getElementById("buttonCart");
 
-buttonCart.addEventListener('click',function(){
-  const asideBar = document.querySelector('.yourproduct')
-  asideBar.classList.remove('hidden')
+buttonCart.addEventListener("click", function () {
+  const asideBar = document.querySelector(".yourproduct");
+  asideBar.classList.remove("hidden");
+});
+const exitSideBar = document.querySelector(".exitSideBar");
 
-})
-const exitSideBar = document.querySelector('.exitSideBar')
+exitSideBar.addEventListener("click", function () {
+  const asideBar = document.querySelector(".yourproduct");
+  asideBar.classList.add("hidden");
+});
 
-exitSideBar.addEventListener('click',function(){
-  const asideBar = document.querySelector('.yourproduct')
-  asideBar.classList.add('hidden')
-
-})
+const containerProduct = document.getElementById("products-container");
+const cartsContainer = document.getElementById("carts-container");
+const asideBar = document.querySelector(".yourproduct");
 
 
-
-const containerProduct = document.getElementById("products-container")
-const cartsContainer = document.getElementById('carts-container')
-const asideBar = document.querySelector('.yourproduct')
-let compteur =0
-containerProduct.addEventListener("click", event =>{
-  if (event.target.classList.contains("btnBuy")){
-    compteur++
-    if (compteur >= 2){
-      alert('you buy this product alredy')
-      return
-    } 
+containerProduct.addEventListener("click", (event) => {
+  if (event.target.classList.contains("btnBuy")) {
+    let id = event.target.id;
+    console.log(id);
+    displayCartSideBar(id);
     console.log("yiuhg");
-    console.log()
-    cartsContainer.innerHTML+=`<article style="border:5px solid white; ">
-          <div class="flexPrice" style="display: flex; justify-content: space-between;">
-              <img src="assestes/logo.png" alt="pokje" width="150px" height="150px" />
-              <h2 class="font-bold underline">hahaha</h2>
-              <h2 class="font-bold underline">ps5</h2>
-            </div>
-            <div style="display: flex; justify-content: space-evenly;">
-              <p >50$</p>
-              <p >en stock</p>
-              <p >categorie :books</p>
-            </div>
-          </article>`
+    console.log();
   }
+});
+
+
+
+function displayCartSideBar(id) {
+  fetch(`http://localhost:3000/api/products/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      asideCarts(data);
+      
+      storageCartsBuys.push(data);
+      localStorage.setItem(
+        "storageCartsBuys",
+        JSON.stringify(storageCartsBuys),
+      );
+    })
+    .catch((error) => {
+      console.log("Une erreur est survenue :", error);
+      erreurMessage();
+    });
+}
+const checkoutForm = document.getElementById('checkoutForm')
+let totall = 0
+let produitBuy=1
+function asideCarts(data) {
+  totall +=data.price 
+  checkoutForm.classList.remove('hidden')
+  Swal.fire({
+    title: "buyed",
+    icon: "success",
+    draggable: true
+  });
   
-})
-
-
-
-
-
-
   
+  cartsContainer.innerHTML += `
+            <div style="border:3px solid white;" class="flex gap-8 items-center" ">
+
+              <img src="http://127.0.0.1:3000${data.image}" alt="${data.description}" width="50%" />
+              <article class="flex flex-col justify-between ">
+                <div class=" flex justify-between" >
+                  <h2 class="font-bold underline">${data.name}</h2>
+                  <h2 class="font-bold underline">${data.price} $</h2>
+                </div>
+                <div >
+                  <p >categorie :${data.categoryName}</p> 
+                  <p >${data.description}</p>
+                </div>
+                <div class="flex text-xl items-center ">
+                  <button class="bg-black p-1">+</button>
+                  <h2>${produitBuy++}</h2>
+                  <button class="bg-black p-1 pr-2">-</button>
+                </div>
+              </article>
+            </div>`;
+  const sousTotal = document.getElementById('sousTotal')
+  sousTotal.innerHTML=`<p class="text-xl">totale : ${totall} $</p>`
+}
+
+// function checkIfPrdctBuy
