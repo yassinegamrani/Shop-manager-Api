@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marcket</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./CSS/style.css" />
     <link
       rel="stylesheet"
@@ -23,7 +24,7 @@
       </div>
       <br><br><br>
       <div id="carts-container">
-        
+
       </div>
       <!-- <article style="border:5px solid white; ">
         <div class="flexPrice" style="display: flex; justify-content: space-between;">
@@ -38,10 +39,24 @@
           </div>
         </article> -->
         <br>
-        <div >
-          <p>totale $0</p>
+        <div id="sousTotal">
+          <!-- <p>totale $0</p> -->
 
         </div>
+        <form id="checkoutForm" class=" hidden text-black">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required>
+
+          <label for="address">Delivery Address</label>
+          <textarea id="address" name="address" rows="1" required></textarea>
+          <button type="submit">Place Order</button>
+      </form>
     </section>
     <header>
       <div>
