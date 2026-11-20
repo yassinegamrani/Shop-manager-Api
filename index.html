@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marcket</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./CSS/style.css" />
     <link
       rel="stylesheet"
@@ -15,6 +16,48 @@
     />
   </head>
   <body>
+    <section class="yourproduct hidden" style="background-color: #0e7490; " >
+      <div style="display: flex;justify-content: space-around;">
+        <h2>YOUR PRODUCT</h2>
+        <button class="exitSideBar" style="background-color: rebeccapurple;">Sortire </button>
+
+      </div>
+      <br><br><br>
+      <div id="carts-container">
+
+      </div>
+      <!-- <article style="border:5px solid white; ">
+        <div class="flexPrice" style="display: flex; justify-content: space-between;">
+            <img src="assestes/logo.png" alt="${product.description}" width="150px" height="150px" />
+            <h2 class="font-bold underline">hahaha</h2>
+            <h2 class="font-bold underline">ps5</h2>
+          </div>
+          <div style="display: flex; justify-content: space-evenly;">
+            <p >50$</p>
+            <p >en stock</p>
+            <p >categorie :books</p>
+          </div>
+        </article> -->
+        <br>
+        <div id="sousTotal">
+          <!-- <p>totale $0</p> -->
+
+        </div>
+        <form id="checkoutForm" class=" hidden text-black">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required>
+
+          <label for="address">Delivery Address</label>
+          <textarea id="address" name="address" rows="1" required></textarea>
+          <button type="submit">Place Order</button>
+      </form>
+    </section>
     <header>
       <div>
         <img
@@ -27,13 +70,26 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#">acceuile</a></li>
+          <li><a href="#">acceuil</a></li>
           <li><a href="#">produit</a></li>
           <li><a href="#">contact</a></li>
         </ul>
       </nav>
       <div>
-        <button style="margin-top: -15px; font-size: 30px;"><i class="fa-solid fa-basket-shopping"></i></button>
+        <a href="cart.html">
+          <button
+            id="buttonCart"
+            style="
+              margin-top: -15px;
+              font-size: 30px;
+              padding: 0px 15px;
+              border: 5px solid black;
+              background-color: lightseagreen;
+            "
+          >
+        </a>
+          Cart<i class="fa-solid fa-basket-shopping"></i>
+        </button>
       </div>
     </header>
     <hr />
@@ -51,25 +107,35 @@
           />
         </div>
 
-        <label >Toutes les catégories</label>
+        <label>Toutes les catégories</label>
         <select name="All products" id="categories" class="text-black">
-          <option value="" class="text-black" selected disabled>All products</option>
+          <option value="" class="text-black" selected disabled>
+            All products
+          </option>
           <!-- <option value="product 1" class="text-black">product 1</option> -->
-          
         </select>
         <br />
         <label for=""> Filtrer by prix</label>
-         <input
-            id="price-input"
-            type="number"
-            placeholder="ajouter un prix..."
-            class="text-black"
-          />
-        
-        <br />
-        <button id="disponiblePrdct" class="rounded-lg px-10 py-3 bg-gray-800 text-gray-100">produits disponibles</button>
-        <button id="restButton" class="rounded-lg px-10 py-3 bg-gray-900 text-gray-100">Réinitialiser</button>
+        <input
+          id="price-input"
+          type="number"
+          placeholder="ajouter un prix..."
+          class="text-black"
+        />
 
+        <br />
+        <button
+          id="disponiblePrdct"
+          class="rounded-lg px-10 py-3 bg-gray-800 text-gray-100"
+        >
+          produits disponibles
+        </button>
+        <button
+          id="restButton"
+          class="rounded-lg px-10 py-3 bg-gray-900 text-gray-100"
+        >
+          Réinitialiser
+        </button>
       </section>
       <hr />
 
