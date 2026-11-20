@@ -184,18 +184,24 @@ containerProduct.addEventListener("click", (event) => {
 });
 
 
-
 function displayCartSideBar(id) {
   fetch(`http://localhost:3000/api/products/${id}`)
     .then((response) => response.json())
     .then((data) => {
+      // if(checkIfPrdctBuy(data)){
+      //   return
+      // }
+      
       asideCarts(data);
       
-      storageCartsBuys.push(data);
+      storageCartsBuys.push(data)
       localStorage.setItem(
         "storageCartsBuys",
         JSON.stringify(storageCartsBuys),
       );
+      console.log(storageCartsBuys);
+      
+      
     })
     .catch((error) => {
       console.log("Une erreur est survenue :", error);
@@ -209,12 +215,10 @@ function asideCarts(data) {
   totall +=data.price 
   checkoutForm.classList.remove('hidden')
   Swal.fire({
-    title: "buyed",
+    title: "buy seccefuly",
     icon: "success",
     draggable: true
   });
-  
-  
   cartsContainer.innerHTML += `
             <div style="border:3px solid white;" class="flex gap-8 items-center" ">
 
@@ -222,7 +226,7 @@ function asideCarts(data) {
               <article class="flex flex-col justify-between ">
                 <div class=" flex justify-between" >
                   <h2 class="font-bold underline">${data.name}</h2>
-                  <h2 class="font-bold underline">${data.price} $</h2>
+                  <h2 class="font-bold underline">${data.price}</h2>
                 </div>
                 <div >
                   <p >categorie :${data.categoryName}</p> 
@@ -239,4 +243,11 @@ function asideCarts(data) {
   sousTotal.innerHTML=`<p class="text-xl">totale : ${totall} $</p>`
 }
 
-// function checkIfPrdctBuy
+function checkIfPrdctBuy(data){
+  for (let i=0;i<storageCartsBuys.length;i++){
+    if (storageCartsBuys[i].id == data.id){
+      return totall++
+    }
+  }
+}
+// localStorage.clear()
