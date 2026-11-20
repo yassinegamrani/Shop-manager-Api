@@ -20,11 +20,7 @@ header{
         gap: 40px;
     }
 }
-.flexPrice{
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
-}
+
 .find {
     padding: 20px;
     text-align: center;
@@ -80,3 +76,42 @@ footer{
         margin-left: 50px;
     }
 }
+
+.yourproduct{ 
+    position: fixed;
+    height: 100%; 
+    width: 33%;
+    right: 0;
+    overflow-y: auto;
+}
+.display{
+    display: none;
+}
+
+
+#checkoutForm {
+  width: 300px;
+  margin: 20px auto;
+
+  padding: 10px;
+}
+
+#checkoutForm label {
+  display: block;
+  margin-top: 10px;
+}
+
+#checkoutForm input,
+#checkoutForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+#checkoutForm button{
+    width: 100%;
+    background-color: cornflowerblue;
+    margin-top: 18px;
+    padding: 12px;
+}
+
